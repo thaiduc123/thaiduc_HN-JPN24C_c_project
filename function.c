@@ -376,13 +376,18 @@ void searchBookName(struct Book book[], int *n){
 	printf("\n\t-Please enter a book's name: ");
 	fgets(search,50,stdin);
 	search[strcspn(search, "\n")]='\0';
-	for (i=0; i<*n; i++){
+		for (i=0; i<*n; i++){
 		if (strstr(book[i].title, search)!= NULL){
 			printf("\n|========|=========================|=====================|====================|==================|==================|");
 			printf("\n|   ID   |           NAME          |        PRICE        |       AUTHOR       |      GENRE       | Date Publication |");
 			printf("\n|========|=========================|=====================|====================|==================|==================|");
+			break;
+		}
+	}
+	for (i=0; i<*n; i++){
+		if (strstr(book[i].title, search)!= NULL){
 			printf("\n| %-6d | %-23s | %-19s | %-18s | %-16s | ", book[i].bookId,book[i].title,book[i].price, book[i].author, book[i].category);
-			printf("%d-%d-%-12d |\n", book[i].publication.month, book[i].publication.day, book[i].publication.year);
+			printf("%-3d/%-3d/%-8d |\n", book[i].publication.month, book[i].publication.day, book[i].publication.year);
 			printf("|========|=========================|=====================|====================|==================|==================|");
 			found++;
 		}
@@ -573,6 +578,11 @@ void searchMemberName(struct Customer member[], int *m){
 			printf("\n|========|=========================|=====================|===============================|");
 			printf("\n|   ID   |           NAME          |        PHONE        |  STATUS (1=locked,0=unlocked) |");
 			printf("\n|========|=========================|=====================|===============================|");
+			break;
+		}
+	}
+	for (i=0; i<*m; i++){
+		if (strstr(member[i].name, search)!= NULL){
 			printf("\n| %-6d | %-23s | %-19s | %-29d |", member[i].memberId,member[i].name,member[i].phone, member[i].status);
 			printf("\n|========|=========================|=====================|===============================|");
 			found++;
