@@ -9,6 +9,7 @@ int length(char info[], int len);
 void printBook(struct Book book[], int size);
 int price(char number[]);
 int titleDuped(struct Book book[], int n, char title[]);
+int titleLocationDuped(struct Book book[], int n, char title[], int location);
 void saveBooks(struct Book book[], int *n);
 void loadBooks(struct Book book[], int *n);
 void addBook(struct Book book[], int *n);

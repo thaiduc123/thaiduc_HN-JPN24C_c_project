@@ -21,7 +21,17 @@ int length(char info[], int len){
 int titleDuped(struct Book book[], int n, char title[]){
 	int i;
     for (i=0; i<n; i++){
-        if ((strlen(title)>0 && strcmp(book[i].title, title)==0)){
+        if (strlen(title)>0 && strcmp(book[i].title, title)==0){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int titleLocationDuped(struct Book book[], int n, char title[], int location){
+	int i;
+    for (i=0; i<n; i++){
+        if (i!=location && strlen(title)>0 && strcmp(book[i].title, title)==0){
             return 1;
         }
     }
@@ -226,7 +236,7 @@ void editBook(struct Book book[], int n){
 				printf("\n\tThis section is empty!\n");
 			} else if(!length(book[findIndex].title, 50)){
 				printf("\n\tThe name is too long!\n");
-			} else if(titleDuped(book, n, book[findIndex].title)){
+			} else if(titleLocationDuped(book, n, book[findIndex].title, findIndex)){
 				printf("\n\tBook already existed!\n");
 			} else {
 				break;
@@ -266,35 +276,33 @@ void editBook(struct Book book[], int n){
 				break;
 			}
 		}while(1);
+		printf("\n\t\t* Date * \n");
 		do{
-			printf("\n\t\t* Date * \n");
-			do{
-				printf("\n\t-Month: ");
-				scanf("%d", &book[findIndex].publication.month);
-				if (book[findIndex].publication.month<0 || book[findIndex].publication.month>12){
-					printf("\n\tDate invalid!\n");
-				} else {
-					break;
-				}
-			}while(1);
-			do{
-				printf("\n\t-Day: ");
-				scanf("%d", &book[findIndex].publication.day);
-				if (book[findIndex].publication.day<0 || book[findIndex].publication.day>31){
-					printf("\n\tDate invalid!\n");
-				} else {
-					break;
-				}
-			}while(1);
-			do{
-				printf("\n\t-Year: ");
-				scanf("%d", &book[findIndex].publication.year);
-				if (book[findIndex].publication.year<0){
-					printf("\n\tDate invalid!\n");
-				} else {
-					break;
-				}
-			}while(1);
+			printf("\n\t-Month: ");
+			scanf("%d", &book[findIndex].publication.month);
+			if (book[findIndex].publication.month<0 || book[findIndex].publication.month>12){
+				printf("\n\tDate invalid!\n");
+			} else {
+				break;
+			}
+		}while(1);
+		do{
+			printf("\n\t-Day: ");
+			scanf("%d", &book[findIndex].publication.day);
+			if (book[findIndex].publication.day<0 || book[findIndex].publication.day>31){
+				printf("\n\tDate invalid!\n");
+			} else {
+				break;
+			}
+		}while(1);
+		do{
+			printf("\n\t-Year: ");
+			scanf("%d", &book[findIndex].publication.year);
+			if (book[findIndex].publication.year<0){
+				printf("\n\tDate invalid!\n");
+			} else {
+				break;
+			}
 		}while(1);
 		printf("\n\t\t*****Completed Editing*****\n");
 	}
