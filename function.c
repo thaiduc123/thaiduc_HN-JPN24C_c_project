@@ -9,12 +9,16 @@
 
 //kiem tra thong tin
 int information(char info[]){
-    return strlen(info)>0;
+	if (strlen(info)>0){
+    	return strlen(info);
+    }
 }
 
 //kiem tra do dai
 int length(char info[], int len){
-    return strlen(info)<=len;
+	if (strlen(info)<=len){
+    	return strlen(info);
+    }
 }
 
 //kiem tra ten 
@@ -162,7 +166,7 @@ void addBook(struct Book book[], int *n){
 		if (!information(book[*n].category)){
 			printf("\n\tThis section is empty!\n");
 		} else if (!length(book[*n].category, 50)){
-			printf("\n\tThe name is too long!\n");	
+			printf("\n\tThe name is too long!\n");
 		} else {
 			break;
 		}
